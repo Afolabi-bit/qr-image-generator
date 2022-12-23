@@ -11,15 +11,18 @@ const regex = new RegExp(reg);
 const hideSpinner = () => {
     spinner.style.display = 'none';
 }
+
 const runSpinner = () => {
     spinner.style.display = 'block';
 }
+
 const spinnerRegulator = () => {
     runSpinner();
     setTimeout(() => {
         hideSpinner();
     }, 1500);
 }
+
 const generateCode = (url, size, theme) => {
     const qrcode = new QRCode("qrcode", {
         text: url,
@@ -27,18 +30,20 @@ const generateCode = (url, size, theme) => {
         height: size
     })
 }
+
 const clear = () => {
     qr.innerHTML = '';
 
     const btn = document.getElementById('save-link');
     if (btn) btn.remove();
 }
-const createDownloadBtn = (downloadUrl) => {
+
+const createDownloadBtn = (downloadUrl, name) => {
     const downloadBtn = document.createElement('a');
     downloadBtn.id = 'save-link';
-    downloadBtn.classList = 'p-3 px-10 text-offWhite mx-auto mt-8 rounded-lg text-lg bg-red hover:bg-red-500';
+    downloadBtn.classList = 'p-3 px-10 text-offWhite mx-auto mt-8 rounded-lg text-lg bg-red';
     downloadBtn.href = downloadUrl;
-    downloadBtn.download = 'QRcode';
+    downloadBtn.download = `${name}QRCode`;
     downloadBtn.innerHTML = 'Download Image';
     document.getElementById('generate').appendChild(downloadBtn);
 }
@@ -48,9 +53,10 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     let url = document.getElementById('url').value;
+    const name = url.split(".")[0];
     const size = document.getElementById('size').value;
     const alert = document.getElementById('alert');
-    
+
     if (url === '') {
         alert.style.display = 'inline';
 
@@ -74,7 +80,7 @@ form.addEventListener('submit', (e) => {
 
             setTimeout(() => {
                 const downloadUrl = qr.querySelector('img').src;
-                createDownloadBtn(downloadUrl);
+                createDownloadBtn(downloadUrl, name);
             }, 50);
         }, 1500);
     }
