@@ -43,7 +43,7 @@ const createDownloadBtn = (downloadUrl, name) => {
     downloadBtn.id = 'save-link';
     downloadBtn.classList = 'p-3 px-10 text-offWhite mx-auto mt-8 rounded-lg text-lg bg-red';
     downloadBtn.href = downloadUrl;
-    downloadBtn.download = `${name}QRCode`;
+    downloadBtn.download;
     downloadBtn.innerHTML = 'Download Image';
     document.getElementById('generate').appendChild(downloadBtn);
 }
