@@ -79,8 +79,9 @@ form.addEventListener('submit', (e) => {
             generateCode(url, size);
 
             setTimeout(() => {
-                const downloadUrl = qr.querySelector('img').src;
-                createDownloadBtn(downloadUrl, name);
+                const downloadUrl = document.querySelector('#qrcode img')
+                console.log(downloadUrl.src)
+                createDownloadBtn(downloadUrl.src, name);
             }, 50);
         }, 1500);
     }
