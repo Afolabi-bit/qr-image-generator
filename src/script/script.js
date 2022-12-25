@@ -39,13 +39,22 @@ const clear = () => {
 }
 
 const createDownloadBtn = (downloadUrl, name) => {
-    const downloadBtn = document.createElement('a');
-    downloadBtn.id = 'save-link';
-    downloadBtn.classList = 'p-3 px-10 text-offWhite mx-auto mt-8 rounded-lg text-lg bg-red';
-    downloadBtn.setAttribute("href", downloadUrl);
-    downloadBtn.setAttribute("download", qrcode);
-    downloadBtn.innerHTML = 'Download Image';
-    document.getElementById('generate').appendChild(downloadBtn);
+    axios({
+        url: downloadUrl,
+        method: 'GET',
+        responseType: 'blob'
+    })
+    .then((response) => {
+        const url = window.URL
+        .createObjectURL(new Blob([response.data]));
+        const btn = document.createElement('a');
+        btn.id = 'save-link';
+        btn.classList = 'p-3 px-10 text-offWhite mx-auto mt-8 rounded-lg text-lg bg-red';
+        btn.innerHTML = 'Download Image';   
+        btn.href = url;
+        btn.setAttribute('download', `${name}.png`);
+        document.getElementById('generate').appendChild(btn);
+    })
 }
 
 hideSpinner();
