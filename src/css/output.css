@@ -782,6 +782,10 @@ video {
     margin-bottom: 7rem;
   }
 
+  .md\:mb-6 {
+    margin-bottom: 1.5rem;
+  }
+
   .md\:h-full {
     height: 100%;
   }
