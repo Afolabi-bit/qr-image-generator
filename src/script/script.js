@@ -72,7 +72,8 @@ async function createDownloadBtn(downloadUrl, name){
 
     const btn = document.createElement('a');
     btn.href = await toDataURL(url);
-    btn.download = `${name}.png`;
+    btn.innerHTML = 'Download Image';   
+    btn.download = name;
     btn.classList = 'p-3 px-10 text-offWhite mx-auto mt-8 rounded-lg text-lg bg-red';
     document.getElementById('generate').appendChild(btn);
 }
