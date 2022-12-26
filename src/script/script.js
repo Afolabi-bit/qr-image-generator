@@ -39,14 +39,15 @@ const clear = () => {
     if (btn) btn.remove();
 }
 
-
+/*
 async function toDataURL(url) {
     const blob = await fetch(url).then(res => res.blob());
     return URL.createObjectURL(blob);
 }
+*/
 
-async function createDownloadBtn(downloadUrl, name){
-    /* axios({
+function createDownloadBtn(downloadUrl, name){
+    axios({
         url: downloadUrl,
         method: 'GET',
         responseType: 'blob'
@@ -61,7 +62,7 @@ async function createDownloadBtn(downloadUrl, name){
         btn.href = url;
         btn.setAttribute('download', `${name}.jpeg`);
         document.getElementById('generate').appendChild(btn);
-    }) */
+    }) 
 
     /* const btn = document.createElement('a');
     btn.setAttribute('href', downloadUrl);
@@ -70,12 +71,12 @@ async function createDownloadBtn(downloadUrl, name){
     btn.classList = 'p-3 px-10 text-offWhite mx-auto mt-8 rounded-lg text-lg bg-red';
     document.getElementById('generate').appendChild(btn); */
 
-    const btn = document.createElement('a');
+    /*const btn = document.createElement('a');
     btn.href = await toDataURL(url);
     btn.innerHTML = 'Download Image';   
     btn.download = name;
     btn.classList = 'p-3 px-10 text-offWhite mx-auto mt-8 rounded-lg text-lg bg-red';
-    document.getElementById('generate').appendChild(btn);
+    document.getElementById('generate').appendChild(btn);*/
 }
 
 hideSpinner();
