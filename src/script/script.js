@@ -39,7 +39,13 @@ const clear = () => {
     if (btn) btn.remove();
 }
 
-const createDownloadBtn = (downloadUrl, name) => {
+
+async function toDataURL(url) {
+    const blob = await fetch(url).then(res => res.blob());
+    return URL.createObjectURL(blob);
+}
+
+async function createDownloadBtn(downloadUrl, name){
     /* axios({
         url: downloadUrl,
         method: 'GET',
@@ -57,10 +63,16 @@ const createDownloadBtn = (downloadUrl, name) => {
         document.getElementById('generate').appendChild(btn);
     }) */
 
-    const btn = document.createElement('a');
+    /* const btn = document.createElement('a');
     btn.setAttribute('href', downloadUrl);
     btn.innerHTML = 'Download Image';   
     btn.setAttribute('download', `${name}.png`);
+    btn.classList = 'p-3 px-10 text-offWhite mx-auto mt-8 rounded-lg text-lg bg-red';
+    document.getElementById('generate').appendChild(btn); */
+
+    const btn = document.createElement('a');
+    btn.href = await toDataURL(url);
+    btn.download = `${name}.png`;
     btn.classList = 'p-3 px-10 text-offWhite mx-auto mt-8 rounded-lg text-lg bg-red';
     document.getElementById('generate').appendChild(btn);
 }
