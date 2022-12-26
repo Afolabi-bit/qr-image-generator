@@ -39,7 +39,7 @@ const clear = () => {
 }
 
 const createDownloadBtn = (downloadUrl, name) => {
-    axios({
+    /* axios({
         url: downloadUrl,
         method: 'GET',
         responseType: 'blob'
@@ -54,7 +54,11 @@ const createDownloadBtn = (downloadUrl, name) => {
         btn.href = url;
         btn.setAttribute('download', `${name}.jpeg`);
         document.getElementById('generate').appendChild(btn);
-    })
+    }) */
+
+    const btn = document.createElement('a');
+    btn.setAttribute('href', url);
+    
 }
 
 hideSpinner();
