@@ -744,7 +744,7 @@ video {
 
 .text-grayishBlue {
   --tw-text-opacity: 1;
-  color: rgb(238 238 238 / var(--tw-text-opacity));
+  color: rgb(170 170 170 / var(--tw-text-opacity));
 }
 
 .text-red {
