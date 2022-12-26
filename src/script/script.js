@@ -23,11 +23,12 @@ const spinnerRegulator = () => {
     }, 1500);
 }
 
-const generateCode = (url, size, theme) => {
+const generateCode = (url, size) => {
     const qrcode = new QRCode("qrcode", {
         text: url,
         width: size,
-        height: size
+        height: size,
+        correctLevel : QRCode.CorrectLevel.H
     })
 }
 
