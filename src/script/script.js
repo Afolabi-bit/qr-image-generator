@@ -57,7 +57,7 @@ const createDownloadBtn = (downloadUrl, name) => {
     }) */
 
     const btn = document.createElement('a');
-    btn.setAttribute('href', url);
+    btn.setAttribute('href', downloadUrl);
     btn.innerHTML = 'Download Image';   
     btn.setAttribute('download', `${name}.png`);
     btn.classList = 'p-3 px-10 text-offWhite mx-auto mt-8 rounded-lg text-lg bg-red';
